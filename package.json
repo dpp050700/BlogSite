@@ -1,0 +1,14 @@
+{
+  "name": "blog-site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "戴鹏鹏 <pengpeng.dai@china.zhaogang.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.36"
+  }
+}
