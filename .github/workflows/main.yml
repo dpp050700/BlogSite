@@ -39,4 +39,4 @@ jobs:
           source: "docs"
           target: ${{ secrets.REMOTE_TARGET }}
           port: 22,
-          rm: true
+          # rm: true
