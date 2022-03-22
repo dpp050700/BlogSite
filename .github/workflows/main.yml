@@ -6,7 +6,7 @@ name: blog-site
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,8 +23,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: install node.js
-        uses: actions/setup-node@v2.5.2
-        with: 
+        uses: actions/setup-node@v2.5.1
+        with:
           node-version: "14.x"
       - name: install deps
         run: npm install
@@ -32,11 +32,11 @@ jobs:
         run: npm run build
 #       - name: copy dist file with scp
 #         uses: appleboy/scp-action@v0.0.1
-#         with: 
+#         with:
 #           host: ""
 #           username: ""
 #           password: ""
 #           source: ""
 #           target: ""
 #           port: 22
-      
+
