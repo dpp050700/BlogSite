@@ -36,7 +36,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_NAME }}
           password: ${{ secrets.REMOTE_PWD }}
-          source: "docs"
+          source: "dist"
           target: ${{ secrets.REMOTE_TARGET }}
-          port: 22,
-          # rm: true
+          port: 22
+          rm: true
