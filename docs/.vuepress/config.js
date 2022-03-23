@@ -3,7 +3,7 @@ module.exports = {
   title: '此间少年',
   description: '我的个人博客',
   head: [
-    ['link', { rel: 'icon', href: '/icon.jpeg' }], // 增加一个自定义的 favicon(网页标签的图标)
+    ['link', { rel: 'icon', href: '/icon.jpeg' }],
   ],
   markdown: {
     lineNumbers: false // 代码块显示行号
@@ -87,6 +87,6 @@ module.exports = {
         }
       ]
     }, // 侧边栏配置
-    sidebarDepth: 2, // 侧边栏显示2级
+    sidebarDepth: 1, // 侧边栏显示1级
   }
 }
