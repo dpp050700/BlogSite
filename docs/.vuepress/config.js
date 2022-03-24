@@ -87,6 +87,6 @@ module.exports = {
         }
       ]
     }, // 侧边栏配置
-    sidebarDepth: 1, // 侧边栏显示1级
+    sidebarDepth: 0, // 侧边栏显示1级
   }
 }

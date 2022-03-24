@@ -1,1 +1,1 @@
-继承
+## JavaScript 继承
