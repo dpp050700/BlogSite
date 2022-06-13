@@ -2,7 +2,7 @@
   "name": "blog-site",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "戴鹏鹏 <pengpeng.dai@china.zhaogang.com>",
+  "author": "戴鹏鹏",
   "license": "MIT",
   "scripts": {
     "dev": "vuepress dev docs",
