@@ -3,7 +3,7 @@
 ### 前言
 
 关于原型和原型链，网上有一张经典的关系图，不了解的同学可能看到这张图会很懵。没关系，当你看完我下面的介绍，相信你一定能够看懂的。
-![](/javascript/5.jpg)
+![](./images/5.jpg)
 
 ### `prototype`
 
@@ -25,7 +25,7 @@ person1.sayName(); // my name is 小明
 
 其实，构造函数的 `prototype` 属性是一个对象，这个对象是在调用构造函数的时候创建的**实例**的原型，在上述例子中，我们通过构造函数 `Person` 创建出实例对象 `person1`， `Person.prototype` 也就是 `person1` 的原型。我们可以用下面这张图来描述一下构造函数和实例原型的关系：
 
-![](/1.png)
+![](./images/1.png)
 
 那么什么是原型呢？我们可以理解为每一个对象在创建的时候都会与另外一个对象关联，这个对象就是我们所说的原型，每一个对象都会从原型继承属性。在上述例子中，我们通过构造函数 `Person` 创建了实例对象 `person1`, 它继承了原型对象的 `sayName` 方法。
 
@@ -49,7 +49,7 @@ person1.__proto__ === Person.prototype; //true
 
 打印 `person1.__proto__` 可以看到以下信息
 
-![](/javascript/2.png)
+![](./images/2.png)
 
 细心的同学已经发现原型对象上不仅仅有我们定义的 `sayName` 方法，还有一个神秘的方法 `constructor`，接下来我们介绍一下什么是 `constructor`。
 
@@ -66,7 +66,7 @@ Person === Person.prototype.constructor; // true
 
 至此，我们知道了实例通过 `__proto__`、构造函数通过 `prototype` 可以指向原型，原型通过`constructor`指向构造函数，我们可以对上面的关系图再加以补充：
 
-![](/javascript/3.png)
+![](./images/3.png)
 
 ### 原型链
 
@@ -80,4 +80,4 @@ Person === Person.prototype.constructor; // true
 
 所以，最终的关系图如下：
 
-![](/javascript/4.png)
+![](./images/4.png)
