@@ -9,79 +9,156 @@ module.exports = {
     lineNumbers: false // 代码块显示行号
   },
   themeConfig: {
-    navbar:[ // 导航栏配置
-      {text: 'JavaScript', link: '/javascript/prototype/' },
+    nav:[ // 导航栏配置
       {
-        text: 'Vue源码分析',
-        children: [
-          { text: 'vue2.0', link: '/vue/' },
-          {text: 'vue3.0', link: '/vueNext/'}
+        text: '前端三剑客',
+        items: [
+          {text: 'HTML', link: '/html/' },
+          {text: 'CSS', link: '/css/' },
+          {text: 'JavaScript', link: '/javascript/prototype/' },
         ]
       },
-      {text: 'React源码分析', link: '/react/'}      
+      {
+        text: '前端框架',
+        items: [
+          {text: 'vue2.0', link: '/vue/' },
+          {text: 'vue3.0', link: '/vueNext/'},
+          {text: 'React源码分析', link: '/react/'},
+        ]
+      },
+      {
+        text: '打包工具',
+        items: [
+          {text: 'webpack', link: '/webpack/' },
+          {text: 'rollup', link: '/rollup/'},
+          {text: 'vite', link: '/vite/'},
+        ]
+      },
+      {
+        text: '面试分享',
+        items: [
+          {text: '面试八股文', link: '/interviewQuestion/html/' },
+          {text: '面试记录', link: '/interviewCompany/company1/'}
+        ]
+      },
     ],
     sidebar: {
       '/javascript/': [
         {
-          text: 'JavaScript',
+          title: 'JavaScript',
           children: [
             {
-              text: '原型原型链',
-              link: '/javascript/prototype/'
+              title: '原型原型链',
+              path: '/javascript/prototype/'
             },
             {
-              text: '继承',
-              link: '/javascript/继承/'
+              title: '继承',
+              path: '/javascript/extends/'
+            },
+            {
+              title: '作用域',
+              path: '/javascript/context/'
+            },
+            {
+              title: '闭包',
+              path: '/javascript/closure/'
+            },
+            {
+              title: '变量提升',
+              path: '/javascript/hoisting/'
+            },
+            {
+              title: 'this指向',
+              path: '/javascript/this/'
+            },
+            {
+              title: '立即执行函数',
+              path: '/javascript/IIFE/'
+            },
+            {
+              title: 'instance原理',
+              path: '/javascript/instanceof/'
+            },
+            {
+              title: 'bind、apply、call',
+              path: '/javascript/bind-apply-call/'
+            },
+            {
+              title: '函数柯里化',
+              path: '/javascript/curry/'
+            },
+            {
+              title: 'V8垃圾回收机制',
+              path: '/javascript/v8/'
+            },
+            {
+              title: '浮点数精度',
+              path: '/javascript/float/'
+            },
+            {
+              title: 'new操作符',
+              path: '/javascript/new/'
+            },
+            {
+              title: '事件循环机制',
+              path: '/javascript/event-loop/'
+            },{
+              title: 'promise原理',
+              path: '/javascript/promise/'
+            },
+            {
+              title: 'generator原理',
+              path: '/javascript/generator/'
             }
           ],
         }
       ],
       '/interviewCompany/': [
         {
-          text: '面试记录',
+          title: '面试记录',
           children: [
             {
-              text: 'XXX公司',
-              link: '/interviewCompany/company1'
+              title: 'XXX公司',
+              path: '/interviewCompany/company1/'
             },
             {
-              text: '2公司',
-              link: '/interviewCompany/company2'
+              title: '2公司',
+              path: '/interviewCompany/company2/'
             },
           ],
         }
       ],
       '/interviewQuestion/': [
         {
-          text: '常见面试题',
+          title: '常见面试题',
           children: [
             {
-              text: 'HTML',
-              link: '/interviewQuestion/html'
+              title: 'HTML',
+              path: '/interviewQuestion/html/'
             },
             {
-              text: 'CSS',
-              link: '/interviewQuestion/css'
+              title: 'CSS',
+              path: '/interviewQuestion/css/'
             },
             {
-              text: 'JavaScript',
-              link: '/interviewQuestion/javascript'
+              title: 'JavaScript',
+              path: '/interviewQuestion/javascript/'
             },
             {
-              text: 'Vue',
-              link: '/interviewQuestion/vue'
+              title: 'Vue',
+              path: '/interviewQuestion/vue/'
             },
             {
-              text: 'React',
-              link: '/interviewQuestion/react'
+              title: 'React',
+              path: '/interviewQuestion/react/'
             },
             {
-              text: 'Webpack',
-              link: '/interviewQuestion/webpack'
+              title: 'Webpack',
+              path: '/interviewQuestion/webpack/'
             },
             {
-              text: 'HTTP',
-              link: '/interviewQuestion/http'
+              title: 'HTTP',
+              path: '/interviewQuestion/http/'
             },
           ],
         }
