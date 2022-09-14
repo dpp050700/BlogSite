@@ -12,5 +12,8 @@ Person.prototype.sayName = function () {
 const person1 = new Person("小明");
 person1.sayName();
 
+console.log(Person.prototype.constructor === Person)
+
 console.log(person1.__proto__ === Person.prototype)
+console.log(person1.__proto__.constructor === Person)
 console.log(person1.__proto__ )

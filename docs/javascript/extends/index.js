@@ -1,10 +1,35 @@
-function Parent() { }
-Parent.prototype.sayName = function () {
-  console.log('say name')
+
+// function Animal() {
+//   this.type = "动物"
+// }
+//
+// Animal.prototype.sayType = function () {
+//   console.log(this.type)
+// }
+//
+// function Dog(){}
+//
+// Dog.prototype = new Animal()
+//
+// let dog = new Dog()
+// dog.sayType()
+
+function Animal() {
+  this.colors = ['red', 'blue']
 }
 
-function Child() { }
-Child.prototype = new Parent()
+Animal.prototype.addColor = function (color) {
+  this.colors.push(color)
+}
 
-var c1 = new Child()
-c1.sayName()
+function Dog(){}
+
+Dog.prototype = new Animal()
+
+let dog1 = new Dog()
+let dog2 = new Dog()
+dog1.addColor('green')
+dog2.addColor('yellow')
+
+console.log(dog1.colors)
+console.log(dog2.colors)
