@@ -1,3 +1,5 @@
+# 常见 JavaScript 面试题
+
 ## 1. JS 如何判断一个数据的类型
 
 我们常用的判断数据类型的方式有三种：typeof、instanceof、Object.prototype.toString.call，现在我们逐一分析三种判断的用法。
@@ -53,21 +55,7 @@ instanceof 原理：只要右边变量的 prototype 在左边变量的原型链�
 
 instanceof 实现
 
-```js
-function myInstanceOf(leftValue, rightValue) {
-  let rightPrototype = rightValue.prototype
-  leftValue = leftValue.__proto__
-  while (true) {
-    if (leftValue === null) {
-      return false
-    }
-    if (leftValue === rightPrototype) {
-      return true
-    }
-    leftValue = leftValue.__proto__
-  }
-}
-```
+<<< @/docs/interviewQuestion/code/instanceof.js
 
 3、Object.prototype.toString
 

@@ -81,8 +81,8 @@ module.exports = {
               path: '/javascript/instanceof/'
             },
             {
-              title: 'bind、apply、call',
-              path: '/javascript/bind-apply-call/'
+              title: 'bind、apply、call.js',
+              path: '/javascript/bind-apply-call.js/'
             },
             {
               title: '函数柯里化',
@@ -160,6 +160,14 @@ module.exports = {
             {
               title: 'HTTP',
               path: '/interviewQuestion/http/'
+            },
+            {
+              title: '手撕代码',
+              path: '/interviewQuestion/code/'
+            },
+            {
+              title: '手撕算法',
+              path: '/interviewQuestion/algorithm/'
             },
           ],
         }
