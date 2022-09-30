@@ -82,7 +82,7 @@ module.exports = {
             },
             {
               title: 'bind、apply、call.js',
-              path: '/javascript/bind-apply-call.js/'
+              path: '/javascript/bind-apply-call/'
             },
             {
               title: '函数柯里化',
