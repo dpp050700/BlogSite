@@ -28,3 +28,12 @@
    1. 样式集中改变
    2. 分离读写操作
    3. 使用 absolute 或 fixed 脱离文档流
+
+
+## 2. 聊聊你对 position 的理解
+position 的可选值包括：static/absolute/relative/fixed/sticky
+1. static 默认值
+2. relative 相对定位，元素相对于其正常位置进行定位。
+3. absolute 绝对定位，相对于 static 定位以外的第一个父元素进行定位，如果没有定位的祖先元素，则一直回溯到body元素。
+4. fixed 固定定位，元素相对于视口定位。
+5. sticky 粘性定位， 元素根据用户的滚动位置进行定位。
