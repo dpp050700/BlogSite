@@ -20,6 +20,15 @@ module.exports = {
         ]
       },
       {
+        text: 'HTTP',
+        link: '/http/'
+        // items: [
+        //   {text: 'vue2.0', link: '/vue/' },
+        //   {text: 'vue3.0', link: '/vueNext/'},
+        //   {text: 'React源码分析', link: '/react/'},
+        // ]
+      },
+      {
         text: '前端框架',
         items: [
           {text: 'vue2.0', link: '/vue/' },
@@ -170,6 +179,16 @@ module.exports = {
               path: '/interviewQuestion/algorithm/'
             },
           ],
+        }
+      ],
+      '/vue/': [
+        {
+          title: '数据驱动',
+          collapsable: false,
+          children: [
+              ['data-driven/', 'Introduction'],
+              'data-driven/new-vue'
+          ]
         }
       ]
     }, // 侧边栏配置
