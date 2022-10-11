@@ -7,6 +7,9 @@
 ## 2. 实现 add(1)(2)(3)
 <<< @/docs/interviewQuestion/code/curry.js
 
+## 2.1 实现add函数，使得：add(1)(2)(3)(4)输出结果为10；add(1)(2)(3)输出结果为6。
+<<< @/docs/interviewQuestion/code/curry2.js
+
 ## 3. 实现 bind
 <<< @/docs/interviewQuestion/code/bind.js
 
