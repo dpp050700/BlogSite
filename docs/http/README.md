@@ -9,3 +9,31 @@ sidebar: auto
 总结来说，`HTTP 是一个在计算机世界里专门在两点之间传输文字、图片、音频、视频等超文本数据的约定和规范。`
 
 ### TCP/IP 协议
+
+
+
+
+### Nginx
+
+```shell
+// 查看 nginx 安装目录
+weheris nginx
+
+// 启动 nginx
+systemctl start nginx
+
+// 停止 nginx
+systemctl stop nginx
+
+// 启动 nginx
+systemctl reload nginx
+
+// 强制重启 nginx
+systemctl restart nginx
+
+// 设置开机启动 nginx
+systemctl enable nginx
+
+// 查询 nginx 状态
+systemctl status nginx
+```

@@ -5,7 +5,7 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/icon.jpeg' }],
   ],
-  base: '/BlogSite/',
+  // base: '/BlogSite/',
   markdown: {
     lineNumbers: false // 代码块显示行号
   },
