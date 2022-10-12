@@ -5,7 +5,7 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/icon.jpeg' }],
   ],
-  // base: '/BlogSite/',
+  base: '/BlogSite/',
   markdown: {
     lineNumbers: false // 代码块显示行号
   },
@@ -195,13 +195,13 @@ module.exports = {
     sidebarDepth: 0, // 侧边栏显示1级
   },
   configureWebpack: (config, isServer) => {
-    console.log(process.env.TARGET_DOMIN === 'github', isServer)
-
-    if(process.env.TARGET_DOMIN === 'github') {
+    if(process.env.TARGET_DOMIN !== 'github') {
+      return {
+        output: {
+          publicPath: '/'
+        }
+      }
       config.output.publicPath = '/BlogSite/'
-    }else  {
-      config.output.publicPath = '/'
     }
-    console.log(config)
   }
 }
