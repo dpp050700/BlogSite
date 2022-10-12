@@ -42,7 +42,7 @@ jobs:
           # 打包后的文件部署到哪个分支上
           BRANCH: gh-pages
           # 打包后的文件在哪里
-          FOLDER: dist
+          FOLDER: BlogSite
 
       - name: copy dist file with scp
         uses: appleboy/scp-action@master
@@ -50,8 +50,8 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_NAME }}
           password: ${{ secrets.REMOTE_PWD }}
-          source: "dist/icon.jpeg"
-          target: "/root/dpp/BlogSite"
+          source: "BlogSite"
+          target: "/root/dpp/blog"
 #          target: ${{ secrets.REMOTE_TARGET }}
           port: 22
           rm: true

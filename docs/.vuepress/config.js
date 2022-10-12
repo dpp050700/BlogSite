@@ -1,5 +1,5 @@
 module.exports = {
-  dest: 'dist',
+  dest: 'BlogSite',
   title: '此间少年',
   description: '我的个人博客',
   head: [
