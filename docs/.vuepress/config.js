@@ -1,5 +1,5 @@
 module.exports = {
-  dest: 'BlogSite',
+  dest: 'dist',
   title: '此间少年',
   description: '我的个人博客',
   head: [
@@ -193,5 +193,13 @@ module.exports = {
       ]
     }, // 侧边栏配置
     sidebarDepth: 0, // 侧边栏显示1级
+  },
+  configureWebpack: (config, isServer) => {
+
+    if(isServer && process.env.TARGET_DOMIN === 'github') {
+      config.output.publicPath = '/BlogSite/'
+    }else  {
+      config.output.publicPath = '/'
+    }
   }
 }
