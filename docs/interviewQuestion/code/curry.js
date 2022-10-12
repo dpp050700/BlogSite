@@ -1,5 +1,5 @@
 /**
- * add(1)(2)(3)
+ * 实现 add(1)(2)(3)
  */
 
 function curry(fn, ...args) {
