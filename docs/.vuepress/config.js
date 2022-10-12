@@ -195,13 +195,12 @@ module.exports = {
     sidebarDepth: 0, // 侧边栏显示1级
   },
   configureWebpack: (config, isServer) => {
-    if(process.env.TARGET_DOMIN !== 'github') {
+    if(config.mode === 'production' && process.env.TARGET_DOMIN !== 'github') {
       return {
         output: {
           publicPath: '/'
         }
       }
-      config.output.publicPath = '/BlogSite/'
     }
   }
 }
