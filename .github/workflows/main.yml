@@ -44,7 +44,7 @@ jobs:
           # 打包后的文件在哪里
           FOLDER: dist
 
-      - name: build app
+      - name: build app site
           run: npm run build:blog
       - name: copy dist file with scp
         uses: appleboy/scp-action@master
