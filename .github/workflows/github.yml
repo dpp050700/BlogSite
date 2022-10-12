@@ -1,0 +1,57 @@
+# This is a basic workflow to help you get started with Actions
+
+name: blog-github
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: install node.js
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: "14.x"
+      # 安装依赖
+      - name: install deps
+        run: npm install
+      # 生成静态文件
+      - name: build app
+        run: npm run build:github
+      # 部署到 GitHub Pages
+      - name: Deploy
+        # 使用别人写好的一个 action
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          # 这里的 ACCESS_TOKEN 名字需要和下文中的相对应
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          # 打包后的文件部署到哪个分支上
+          BRANCH: gh-pages
+          # 打包后的文件在哪里
+          FOLDER: dist
+
+#      - name: copy dist file with scp
+#        uses: appleboy/scp-action@master
+#        with:
+#          host: ${{ secrets.REMOTE_HOST }}
+#          username: ${{ secrets.REMOTE_NAME }}
+#          password: ${{ secrets.REMOTE_PWD }}
+#          source: "dist"
+#          target: "/root/dpp/blog"
+#          #          target: ${{ secrets.REMOTE_TARGET }}
+#          port: 22
+#          rm: true
