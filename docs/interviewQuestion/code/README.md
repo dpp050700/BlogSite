@@ -1,3 +1,7 @@
+---
+sidebarDepth: 1
+---
+
 # 面试中常见的手写题集合
 
 ## 1. 实现 instanceof
@@ -37,3 +41,6 @@
 ## 13. 实现限制并发的Promise调度器
 
 ## 14. 实现 sum 方法
+<<< @/docs/interviewQuestion/code/sum.js
+
+## 15. 实现数组打乱顺序 shuffle 方法

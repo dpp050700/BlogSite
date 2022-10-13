@@ -12,6 +12,10 @@ sidebar: auto
 
 
 
+### HTTPS
+私钥  服务器通过私钥解密公钥加密过后的数据
+公钥  放在互联网上，用来加密传输的数据
+
 
 ### Nginx
 
@@ -36,4 +40,20 @@ systemctl enable nginx
 
 // 查询 nginx 状态
 systemctl status nginx
+
+// 代理缓存       存放目录  是否创建二级文件夹   10m 缓存大小
+proxy_cache_path cache levels=1:2 keys_zone=my_cache:10m
+// 使用代理缓存的时候 往往需要和 response header  Vary 一起使用
+
+server {
+  listen    80;
+  server_name test.com;
+  
+  location / {
+    proxy_cache my_cache; // 使用代理缓存
+    proxy_pass http://127.0.0.1:8888; // 表示所有的请求都代理到这个地方
+    proxy_set_header Host $host;
+  }
+}
+
 ```
