@@ -123,9 +123,179 @@ http://nginx.org/en/download.html
 
 
 ### 4. HTTPS
-私钥  服务器通过私钥解密公钥加密过后的数据
-公钥  放在互联网上，用来加密传输的数据
+在 TCP/IP、DNS 和 URI 的作用下， HTTP 协议可以在互联网世界里访问任意的网页。但是，HTTP 是明文传输的，这就意味着，在传输的任何节点数据都可以被窃听甚至篡改。这样是非常不安全的。
 
+HTTPS 全称：超文本传输安全协议，常称为 HTTP over SSL/TLS，也就是运行在 SSL/TLS 协议上的 HTTP。SSL/TLS 是一个负责加密通信的安全协议，建立在 TCP/IP 之上，所以也是个可靠的传输协议，可以被用作 HTTP 的下层。
+
+HTTPS 主要作用是：
+- 对数据进行加密，并建立一个信息安全通道，来保证传输过程中的数据安全
+- 对网站服务器进行真实身份认证
+
+
+## HTTP 请求响应过程
+我们以一道经典的面试题来学习一下 HTTP 请求响应过程。`在浏览器中输入网址（http://www.cijianshaonian.com/index.html）后，到底发生了什么事情？`
+- 首先 DNS 服务器会对域名 www.cijianshaonian.com 进行解析，找到 www.cijianshaonian.com 多对应的 IP 地址，然后 HTTP 客户端进程会发起一个到服务器 www.cijianshaonian.com 的 TCP 连接，进行[三次握手](https://juejin.cn/post/7045059219216662564)。
+- TCP 连接建立成功之后，客户端向服务器发送一个 HTTP 请求报文，该报文中包含了要访问的资源路径。
+- 服务端接收到客户端发来的请求报文后，进行请求的解析，并检索出要访问的资源，并将检索出来的对象封装到 HTTP 响应报文中，向客户端进行发送。
+- 服务端随即通知 TCP 断开 TCP 连接，实际上是需要等到客户端接受完响应报文后才会断开 TCP 连接。 
+- 客户端接收完响应报文后，TCP 连接会关闭。客户端从响应报文中获取要访问的资源，并呈现给用户。
+上述过程是一个简单的 `请求-响应` 过程，真实情况下会比这复杂很多，会涉及到缓存、代理等等，这些我们后面再详细了解。
+
+### 1 什么是[三次握手](https://juejin.cn/post/7045059219216662564)
+三次握手是建立 TCP 连接的过程，对应还有断开 TCP 连接的四次挥手。
+1. 一开始，服务端和客户端都处于 CLOSE 状态。
+2. 服务端主动监听某个端口，处理 LISTEN 状态。
+3. 客户端随机生成序列号（这里的序列号一般叫做client_isn），并且把标识位设置为 SYN，然后把该报文发送给服务端。
+4. 客户端发送完 SYN 报文以后，自己便进入了 SYN_SEND 状态。
+5. 服务端接收到了客户端的请求之后，自己也初始化对应的序列号（这里的序列号一般叫做 server_isn）。
+6. 服务端在「确认号」字段里填上 client_isn + 1（相当于告诉客户端，已经收到了发送过来的序列号了） ，并且把 SYN 和 ACK 标记位都点亮(置为1)，把该报文发送客户端，服务端的状态变成 SYN-REVD 状态。
+7. 客户端收到服务端发送的报文后，就知道服务端已经接收到了自己的序列号（通过确认号就可以知道），并且接收到了服务端的序列号(server_isn)。
+8. 此时，客户端需要告诉服务端自己已经接收到了他发送过来的序列号，所以在「确认号」字段上填上 server_isn+1，，并且标记位 ACK 为 1。
+9. 客户端在发送报文之后，进入 ESTABLISHED 状态，而服务端接收到客户端的报文之后，也进入 ESTABLISHED 状态。
+
+![](./images/tcp_connect.png)
+
+### 2 HTTP 报文是怎样的
+
+HTTP 的请求报文是以 `header + body` 的结构，具体而言：
+```
+起始行 + 头部 + 空格 + 实体
+```
+
+#### 起始行
+对于请求报文来说，起始行类似下面这样:
+```
+// 方法 + 路径 + http版本
+GET /home HTTP/1.1
+```
+对于响应报文来说，起始行类似下面这样:
+```
+// http版本 + 状态码 + 原因
+HTTP/1.1 200 OK
+```
+
+#### 头部
+展示一下请求头和响应头在报文中的位置:
+
+![](./images/request_header.png)
+
+![](./images/response_header.png)
+
+不管是请求头还是响应头，其中的字段是相当多的，而且牵扯到 http 非常多的特性，这里就不一一列举的，重点看看这些头部字段的格式：
+1. 字段名不区分大小写
+2. 字段名不允许出现空格，不可以出现下划线 `_`
+3. 字段名后面必须紧接着 `:`
+
+#### 空行
+用来区分开 `头部` 和 `实体` 。空行后的内容全部被视为 `实体`。
+
+#### 实体
+就是具体的数据了，也就是 `body` 部分。请求报文对应请求体, 响应报文对应响应体。
+
+### 3 HTTP 的请求方法
+`http/1.1` 规定了以下请求方法:
+- GET: 通常用来获取资源
+- HEAD: 获取资源的元信息
+- POST: 提交数据，即上传数据
+- PUT: 修改数据
+- DELETE: 删除资源(几乎用不到)
+- CONNECT: 建立连接隧道，用于代理服务器
+- OPTIONS: 列出可对资源实行的请求方法，用来跨域请求
+- TRACE: 追踪请求-响应的传输路径
+
+### 4 HTTP 的状态码
+RFC 规定 HTTP 的状态码为三位数，被分为五类:
+- 1xx: 表示目前是协议处理的中间状态，还需要后续操作。
+- 2xx: 表示成功状态。
+- 3xx: 重定向状态，资源位置发生变动，需要重新请求。
+- 4xx: 请求报文有误。
+- 5xx: 服务器端发生错误。
+
+#### 1xx
+101 Switching Protocols。在 HTTP 升级为 WebSocket 的时候，如果服务器同意变更，就会发送状态码 101。
+
+#### 2xx
+200 OK是见得最多的成功状态码。通常在响应体中放有数据。
+
+204 No Content含义与 200 相同，但响应头后没有 body 数据。
+
+206 Partial Content 顾名思义，表示部分内容，它的使用场景为 HTTP 分块下载和断点续传，当然也会带上相应的响应头字段Content-Range。
+
+#### 3xx
+301 Moved Permanently 即永久重定向，对应着 302 Found，即临时重定向。
+
+比如你的网站从 HTTP 升级到了 HTTPS 了，以前的站点再也不用了，应当返回 301，这个时候浏览器默认会做缓存优化，在第二次访问的时候自动访问重定向的那个地址。而如果只是暂时不可用，那么直接返回 302 即可，和 301 不同的是，浏览器并不会做缓存优化。
+
+304 Not Modified: 当协商缓存命中时会返回这个状态码。
+
+#### 4xx
+400 Bad Request: 开发者经常看到一头雾水，只是笼统地提示了一下错误，并不知道哪里出错了。
+
+403 Forbidden: 这实际上并不是请求报文出错，而是服务器禁止访问，原因有很多，比如法律禁止、信息敏感。
+
+404 Not Found: 资源未找到，表示没在服务器上找到相应的资源。
+
+405 Method Not Allowed: 请求方法不被服务器端允许。
+
+406 Not Acceptable: 资源无法满足客户端的条件。
+
+408 Request Timeout: 服务器等待了太长时间。
+
+409 Conflict: 多个请求发生了冲突。
+
+413 Request Entity Too Large: 请求体的数据过大。
+
+414 Request-URI Too Long: 请求行里的 URI 太大。
+
+429 Too Many Request: 客户端发送的请求过多。
+
+431 Request Header Fields Too Large请求头的字段内容太大。
+
+#### 5xx
+500 Internal Server Error: 仅仅告诉你服务器出错了，出了啥错咱也不知道。
+
+501 Not Implemented: 表示客户端请求的功能还不支持。
+
+502 Bad Gateway: 服务器自身是正常的，但访问的时候出错了，啥错误咱也不知道。
+
+503 Service Unavailable: 表示服务器当前很忙，暂时无法响应服务。
+
+### 5 HTTP 的请求头、响应头
+
+#### Content-Type
+Content-Type 用来标记发送端报文 `body` 部分的数据类型，对于接收端可以使用 Accept
+
+具体取值可以分为下面几类：
+- text： text/html, text/plain, text/css 等
+- image: image/gif, image/jpeg, image/png 等
+- audio/video: audio/mpeg, video/mp4 等
+- application: application/json, application/javascript, application/pdf, application/octet-stream
+
+#### Content-Language
+Content-Language 用来指定支持的语言，在接受方对应的字段为 `Accept-Language`。
+```text
+// 发送端
+Content-Language: zh-CN, zh, en
+
+// 接收端
+Accept-Language: zh-CN, zh, en
+
+```
+
+#### Content-Encoding
+Content-Encoding 用来标记发送端报文 `body` 的压缩方式，对于接收端可以使用 Accept-Content-Encoding。这个字段的取值有下面几种：
+- gzip: 当今最流行的压缩格式
+- deflate: 另外一种著名的压缩格式
+- br: 一种专门为 HTTP 发明的压缩算法
+
+```text
+// 发送端
+Content-Language: zh-CN, zh, en
+
+// 接收端
+Accept-Language: zh-CN, zh, en
+
+```
 
 ### Nginx
 
