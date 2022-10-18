@@ -271,6 +271,108 @@ Content-Type 用来标记发送端报文 `body` 部分的数据类型，对于�
 - audio/video: audio/mpeg, video/mp4 等
 - application: application/json, application/javascript, application/pdf, application/octet-stream
 
+<<< @/docs/http/code/src/accept/index.html
+```js
+const http = require('http')
+const fs = require('fs')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            const html = fs.readFileSync('./src/accept/index.html')
+
+            response.writeHead(200, {})
+            response.end(html)
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+我们打开 `http://localhost:8888`，默认展现出来了 html 页面，效果如下：
+
+![](./images/content_type_1.jpg)
+
+现在，我们在服务端返回的时候加上 `Content-type`，并将它的类型设置为 `text/plain`:
+```js
+const http = require('http')
+const fs = require('fs')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            const html = fs.readFileSync('./src/accept/index.html')
+
+            response.writeHead(200, {})
+            response.end(html)
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+![](./images/content_type_2.jpg)
+
+我们发现此时浏览器没有将服务端返回的内容识别成 `html` 文件。这是因为，我们在服务端的返回头里面指定了返回数据的 `Content-type` 为 `text/plain`。
+
+若我们将 `Content-type` 改为 `text/html`，可以发现浏览器又能渲染出 html 内容了。这里就不在展示效果了。
+
+接下来，我们看看 image application 的情况。
+
+```js
+// 在 http://localhost:8888 会展示成一张图片
+const http = require('http')
+const fs = require('fs')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            const image = fs.readFileSync('./src/accept/test.jpeg')
+
+            response.writeHead(200, {
+                'Content-type': 'image/jpeg'
+            })
+            response.end(image)
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+
+```js
+// 在 http://localhost:8888 会展示成 JSON 数据
+const http = require('http')
+const fs = require('fs')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            response.writeHead(200, {
+                'Content-type': 'application/json'
+            })
+            response.end(JSON.stringify({name: '此间少年'}))
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+
+#### Content-Charset
+`Content-Charset` 接收端对应为 `Accept-Charset`，指定可以接受的字符集，而在发送端并没有对应的 `Content-Charset`, 而是直接放在了 `Content-Type` 中，以 `charset` 属性指定。如:
+```text
+// 发送端
+Content-Type: text/html; charset=utf-8
+
+// 接收端
+Accept-Charset: charset=utf-8
+```
+
 #### Content-Language
 Content-Language 用来指定支持的语言，在接受方对应的字段为 `Accept-Language`。
 ```text
@@ -279,7 +381,6 @@ Content-Language: zh-CN, zh, en
 
 // 接收端
 Accept-Language: zh-CN, zh, en
-
 ```
 
 #### Content-Encoding
@@ -290,12 +391,243 @@ Content-Encoding 用来标记发送端报文 `body` 的压缩方式，对于接�
 
 ```text
 // 发送端
-Content-Language: zh-CN, zh, en
+Content-Encoding: gzip
 
 // 接收端
-Accept-Language: zh-CN, zh, en
-
+Accept-Encoding: gzip
 ```
+我们对上面的例子做一个简单的修改，将 `Content-Encoding` 改为 `gzip`
+
+<<< @/docs/http/code/src/accept/index.html
+```js
+const http = require('http')
+const fs = require('fs')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            const html = fs.readFileSync('./src/accept/index.html')
+
+            response.writeHead(200, {
+                'Content-type': 'text/html',
+                'Content-Encoding': 'gzip'
+            })
+            response.end(html)
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+此时，我们可以发现，页面不能正常的渲染了，这是因为，我们指定了服务端返回数据的压缩方式为 `gzip`，但是实际返回的数据并没有进行压缩处理。这里我们可以借助 `node` 自带的包 `zlib` 对文件 html 进行压缩处理后返回。
+
+```js
+const http = require('http')
+const fs = require('fs')
+const zlib = require('zlib')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            const html = fs.readFileSync('./src/accept/index.html')
+
+            response.writeHead(200, {
+                'Content-type': 'text/html',
+                'Content-Encoding': 'gzip'
+            })
+            response.end(zlib.gzipSync(html))
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+将 `html` 文件内容压缩返回后，可以看到页面又能正常渲染了。
+
+#### Content-length
+`Content-length` 用来指明发送端传输数据包的长度。当 `Content-length` 设置的值小于数据包实际长度的时候，数据会在 http 的响应体中直接被截断了。当 `Content-length` 设置的值和数据包实际长度相同的时候，才能够正确的返回数据。
+
+```js
+const http = require('http')
+const fs = require('fs')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            response.writeHead(200, {
+                'Content-type': 'text/html',
+                'Content-length': '8'
+            })
+            response.end('helloWorld')
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+
+#### Transfer-Encoding
+上面我们说到可以通过 `Content-length` 来指定包的长度，实际上在数据传输的时候我们往往不知道包的实际长度，这时候就需要借助 `Transfer-Encoding`
+
+`Transfer-Encoding` 表示分块传输数据，设置这个字段后会自动产生两个效果:
+- Content-Length 字段会被忽略
+- 基于长连接持续推送动态内容
+
+```js
+const http = require('http')
+const fs = require('fs')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            response.writeHead(200, {
+                'Content-type': 'text/html;charset=utf8',
+                'Content-length': '8',
+                'Transfer-Encoding': 'chunked'
+            })
+            response.write('hello, world')
+
+            setTimeout(() => {
+                response.write("<br/>你好，世界");
+            }, 1000);
+
+            setTimeout(() => {
+                response.write("<br/>안녕, 세상.");
+            }, 2000);
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+
+### Cookie
+
+#### Cookie 简介
+Cookie 本质上就是浏览器里面存储的一个很小的文本文件，内部以键值对的方式来存储。向同一个域名下发送请求，都会携带相同的 `Cookie`，服务器拿到 `Cookie` 进行解析，便能拿到客户端的状态。而服务端可以通过响应头中的 `Set-Cookie` 字段来对客户端写入`Cookie`。
+
+```js
+const http = require('http')
+const fs = require('fs')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            const html = fs.readFileSync('./src/cookie/index.html')
+
+            response.writeHead(200, {
+                'Content-type': 'text/html',
+                'Set-Cookie': 'id=123'
+            })
+            response.end(html)
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+如果要设置多个 `Cookie` 也可以使用数组：
+```text
+'Set-Cookie': ['id=123', 'address=shang_hai']
+```
+
+#### Cookie 有效期
+Cookie 的有效期可以通过Expires和Max-Age两个属性来设置。
+- Expires 即过期时间。
+- Max-Age 用的是一段时间间隔，单位是秒，从浏览器收到报文开始计算。
+
+```js
+const http = require('http')
+const fs = require('fs')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            const html = fs.readFileSync('./src/cookie/index.html')
+
+            const expiresTime = new Date()
+            expiresTime.setTime(expiresTime.getTime() + 10 * 1000)
+
+
+            response.writeHead(200, {
+                'Content-type': 'text/html',
+                // max-age=10 设置 10s 后过期
+                // expires 指定具体过期的时间
+                'Set-Cookie': ['id=123;max-age=10', `address=shang_hai;expires=${expiresTime.toUTCString()}`]
+            })
+            response.end(html)
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+
+#### Cookie 作用域
+
+关于作用域也有两个属性: `Domain` 和 `path`, 给 `Cookie` 绑定了域名和路径，在发送请求之前，发现域名或者路径和这两个属性不匹配，那么就不会带上 Cookie。值得注意的是，对于路径来说，`/` 表示域名下的任意路径都允许使用 `Cookie`。
+
+```js
+const http = require('http')
+const fs = require('fs')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            const html = fs.readFileSync('./src/cookie/index.html')
+
+
+            const host = request.headers.host
+
+            if(host === 'httpstudy.com:8888') {
+                response.writeHead(200, {
+                    'Content-type': 'text/html',
+                    'Set-Cookie': ['id=123;path=/name', `address=shang_hai;domain=httpstudy.com`]
+                })
+            }
+            response.end(html)
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+
+#### Cookie 安全相关
+如果 cookie 字段带上 `HttpOnly`，那么说明只能通过 HTTP 协议传输，不能通过 JS 访问，这也是预防 XSS 攻击的重要手段。
+
+如果带上 `Secure`，说明只能通过 HTTPS 传输 cookie。
+
+```js
+const http = require('http')
+const fs = require('fs')
+
+function startHttp() {
+    http
+        .createServer((request, response) => {
+
+            const html = fs.readFileSync('./src/cookie/index.html')
+
+            response.writeHead(200, {
+                'Content-type': 'text/html',
+                'Set-Cookie': ['id=123;Secure', `address=shang_hai;HttpOnly`]
+            })
+            response.end(html)
+        })
+        .listen(8888)
+}
+
+module.exports = startHttp
+```
+
+### 缓存
 
 ### Nginx
 
