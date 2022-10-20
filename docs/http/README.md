@@ -684,7 +684,7 @@ HTTP 缓存分为 2 种，一种是强缓存，另一种是协商缓存。主要
 
 强缓存不需要发送请求到服务端，直接读取浏览器本地的缓存。在 Chrome 的 Network 中显示的 HTTP 状态码是 200，size 显示为 Memory Cache（缓存存放在内存中）或 Disk Cache (缓存存放在硬盘中)，存放的位置是由浏览器控制的。是否强缓存由 Expires、Cache-Control 和 Pragma 属性共同来控制。
 
-##### Cache-Control
+##### Cache-Control [](https://www.cnblogs.com/tlxf-blog/p/11078366.html)
 
 `Cache-Control` 有以下常用的属性：
 
@@ -694,6 +694,83 @@ HTTP 缓存分为 2 种，一种是强缓存，另一种是协商缓存。主要
 - private 专用于个人的缓存，中间代理、CDN 等不能缓存此响应
 - public 响应可以被中间代理、CDN 等缓存
 - must-revalidate 在缓存过期前可以使用，过期后必须向服务器验证
+
+<font size="3">1. max-age、max-stale、s-maxage</font>
+
+代码中我们设置 max-age=20，按照我们的预想，当页面第二次访问的时候会命中缓存，20s 过后，缓存失效，再次访问页面需要重新发起请求。
+
+<<< @/docs/http/code/src/cache/index.html
+<<< @/docs/http/code/src/cache/index.js
+
+当我们第一次访问页面的时候，可以在 NetWork 中看到如下截图:
+
+![](./images/cache_max-age_1.jpg)
+
+可以看出，图片的大小为 110KB， 请求时长 2ms，接着我们刷新页面，再次查看 NetWork：
+
+![](./images/cache_max-age_2.jpg)
+![](./images/cache_max-age_3.jpg)
+
+发现 Size 栏显示 memory cache，Time 栏显示加载时长 0ms。从请求的 Request Headers 可以看出来，我们此次请求并没有真的发送，而是走的浏览器缓存。
+
+而 20s 后我们再次刷新页面的时候，可以看出资源又重新请求了。
+
+![](./images/cache_max-age_1.jpg)
+
+当缓存过期之后，如果设置了 max-stale，只要还在 max-stale 时间内，就还可以使用过期的缓存，不需要重新请求。**max-stale 只有在发起发设置才有效**
+
+s-maxage 与 max-age 指令相同，但是不同点是s-maxage指令只适用于供多位用户使用的公共缓存服务器（一般为代理），也可以说对于向同一用户重复返回响应的服务器来说，这个指令没有任何作用。同时，使用此字段后，expires 和 max-age 字段无效。
+
+<font size="3">1. no-cache</font>
+
+当请求首部中包含 no-cache 时则表示客户端将不会接收缓存过的响应，于是，中间的缓存服务器会把客户端请求转发给源服务器。
+
+当响应首部中包含 no-cache 时则表示缓存服务器不对资源进行缓存。源服务器以后也将不再对缓存服务器请求中的资源进行有效性确认且禁止对其响应资源进行缓存操作。
+
+当设置了 no-cache 的时候，每次都要将请求发送到服务器进行验证，可以配合 Last-Modified 或者 ETag 进行验证。
+
+**Last-Modified**
+
+当我们在 Response Header 设置了 'Cache-Control' 为 `no-cache`，并设置 `Last-Modified`，那么，在下次请求的时候，浏览器会将上一次 Response Header 中的 `Last-Modified` 作为本次 Request Header 的 `if-modified-since/if-unmodified-since` 的值传给服务端，浏览器通过比较文件的 `Last-Modified` 和 `if-modified-since/if-unmodified-since` 来判断文件是否已经更新，如果文件更新过，那么返回 200 状态码，如果文件没有更新，返回 304 状态码，告诉浏览器可以使用缓存文件。
+
+<<< @/docs/http/code/src/cache/no-cache/index.html
+<<< @/docs/http/code/src/cache/no-cache/index.js
+
+![](./images/cache_last-modified_2.jpg)
+
+**ETag**
+
+ETag 是资源对内容产生唯一的签名，当资源内容发生改变会生成一个新的签名。
+
+ETag 的用法和 Last-Modified 类似，当我们在 Response Header 设置了 'Cache-Control' 为 `no-cache`，并设置 `ETag`，那么，在下次请求的时候，浏览器会将上一次 Response Header 中的 `ETag` 作为本次 Request Header 的 `if-none-match/if-match` 的值传给服务端，浏览器通过比较 `ETag` 和 `if-none-match/if-match` 值是否相同来判断是否命中缓存，命中则返回 304 状态码。否则，返回 200 状态码。
+
+<<< @/docs/http/code/src/cache/no-cache-etag/index.html
+<<< @/docs/http/code/src/cache/no-cache-etag/index.js
+
+![](./images/cache_etag_1.jpg)
+
+<font size="3">1. no-store</font>
+当给 `Cache-Control` 设置了 `no-store` 表示不在本地存储请求和响应的任意部分。
+
+<font size="3">1. must-revalidate</font>
+
+must-revalidate 表示当缓存在有效期内，会直接使用浏览器缓存，不会发起服务端请求。当缓存过期了，客户端会再次发起请求（带有If-Modified-Since/If-None-Match请求头），如果服务端返回的状态码是 304，则客户端会根据该 304 响应所包含的一些响应头（Date、Last-Modified、Cache-Control等）重新计算出这条缓存的过期时间。
+
+<<< @/docs/http/code/src/cache/must-revalidate/index.html
+<<< @/docs/http/code/src/cache/must-revalidate/index.js
+
+我们运行以上案例，刷新页面后连续点击获取数据按钮。
+
+![](./images/cache_must-revalidate.jpg)
+
+可以看到，"区块 1" 是我们第一次访问的时候，发送了服务端请求，服务端返回了 200。"区块 2" 是我们在 5s 时间内（也就是缓存有效期内 max-age=5）点击按钮的时候，并没有发起服务端请求，而是直接使用了浏览器缓存数据。 "区块 3" 是缓存到期后，我们再次发起服务端请求，服务端经过验证，发现缓存没有过期，于是返回 304 状态码，此时浏览器根据服务端返回的数据会刷新缓存有效期。"区块 4" 是当缓存有效期更新后，再次获取数据又直接走浏览器缓存。
+
+
+### Redirect
+
+### Connection
+
+### Content-Security-Policy
 
 ### Nginx
 
