@@ -23,11 +23,6 @@ module.exports = () => {
         {
           text: 'HTTP',
           link: '/http/'
-          // items: [
-          //   {text: 'vue2.0', link: '/vue/' },
-          //   {text: 'vue3.0', link: '/vueNext/'},
-          //   {text: 'React源码分析', link: '/react/'},
-          // ]
         },
         {
           text: '前端框架',
@@ -190,6 +185,31 @@ module.exports = () => {
               ['data-driven/', 'Introduction'],
               'data-driven/new-vue'
             ]
+          }
+        ],
+        '/vite/': [
+          {
+            title: '前言',
+            path: '/vite/'
+          },
+          {
+            title: 'Vite 基础入门',
+            path: '/vite/base/create-project/',
+            children: [
+              {
+                title: '使用 Vite 快速搭建项目',
+                path: '/vite/base/create-project/',
+              },
+              {
+                title: 'Vite 配置项介绍',
+                path: '/vite/base/vite-config/',
+              }
+            ]
+          },
+          {
+            title: 'Vite 原理分析',
+            path: '/vite/analysis/',
+            children: []
           }
         ]
       }, // 侧边栏配置

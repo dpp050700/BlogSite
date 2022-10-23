@@ -818,3 +818,9 @@ server {
 }
 
 ```
+
+## 相关文章
+
+1. [看完这篇HTTP，跟面试官扯皮就没问题了](https://juejin.cn/post/6844904045572800525)
+2. [HTTP灵魂之问，巩固你的 HTTP 知识体系](https://juejin.cn/post/6844904100035821575)
+3. [可能是全网最全的http面试答案](https://juejin.cn/post/6844903865410650126)
