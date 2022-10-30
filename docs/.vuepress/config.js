@@ -46,7 +46,7 @@ module.exports = () => {
             {text: '面试八股文', link: '/interviewQuestion/html/' },
             {text: '面试记录', link: '/interviewCompany/company1/'}
           ]
-        },
+        }
       ],
       sidebar: {
         '/javascript/': [
