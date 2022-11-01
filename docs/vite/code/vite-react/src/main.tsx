@@ -1,5 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import {name} from '../package.json'
+console.log((name))
+
 import App from './App'
 import './index.css'
 
