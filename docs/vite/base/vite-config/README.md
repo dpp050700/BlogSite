@@ -129,11 +129,76 @@ resolve.extensions 用来配置导入时想要省略的扩展名列表。
 :::
 
 ## json.namedExports
+- 类型：boolean
+- 默认值： true
+
+`json.namedExports` 表示是否支持从 `.json` 文件中进行按名导入。
+
+```json
+// config.json
+{
+  "name": "vite-project"
+}
+```
+```js
+// json.namedExports = true
+import { name } from 'config.json' // true
+import config from 'config.json'   // true
+
+// json.namedExports = false
+import { name } from 'config.json' // error
+import config from 'config.json'   // true
+```
 
 ## json.stringify
+- 类型：boolean
+- 默认值： false
+
+若设置为 true，导入的 JSON 会被转换为 export default JSON.parse("...")，这样会比转译成对象字面量性能更好，尤其是当 JSON 文件较大的时候。
+
+:::warning
+`json.stringify` 设置为 true 后，`json.namedExports` 将会被置为 `false`, 即不可按名导入。
+:::
 
 ## esbuild
 
 ## envDir
+- 类型：string
+- 默认值： root **`注意：这里的 root 表示项目根目录，不是 root 文件夹 ！！！`**
+
+`envDir` 用来表示加载 `.env` 文件的目录。可以是一个绝对路径，也可以是相对于项目根的路径。
+
+Vite 按照以下规则加载额外的环境变量：
+
+```text
+.env                # 所有情况下都会加载
+.env.local          # 所有情况下都会加载，但会被 git 忽略
+.env.[mode]         # 只在指定模式下加载
+.env.[mode].local   # 只在指定模式下加载，但会被 git 忽略
+```
+
+:::warning
+1. 指定模式的文件会比通用形式的优先级高。
+2. Vite 执行时已经存在的环境变量有最高的优先级，不会被 .env 类文件覆盖
+3. .env 文件在 Vite 启动时被加载，若发生改动，需要重启服务后生效。
+:::
+
+Vite 的环境变量都会在 `import.meta.env` 中暴露出来。但是，需要注意的是，Vite 为了防止意外地将一些环境变量泄漏到客户端，默认只有以 `VITE_` 为前缀的变量才会暴露出来。当然，我们也可以通过 `envPrefix` 来修改默认前缀。
+
+例如：
+```text
+VITE_APP_NAME="vite-project"
+APP_NAME="vite-project"
+
+// 只有 VITE_APP_NAME 会被暴露为 import.meta.env.VITE_APP_NAME， 而 APP_NAME 则不会。
+```
 
 ## envPrefix
+- 类型：string | string[]
+- 默认值： VITE_
+
+`envPrefix` 用来配置暴露给 import.meta.env 的环境变量前缀。
+
+:::warning
+envPrefix 不能被设置为空字符串 ''。这样会暴露所有的环境变量。Vite 检测到配置为 '' 时将会抛出错误。
+:::

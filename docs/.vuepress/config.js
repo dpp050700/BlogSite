@@ -203,6 +203,10 @@ module.exports = () => {
               {
                 title: 'Vite 配置项介绍',
                 path: '/vite/base/vite-config/',
+              },
+              {
+                title: 'Vite 中接入现代化的 CSS 工程方案',
+                path: '/vite/base/vite-style/',
               }
             ]
           },
