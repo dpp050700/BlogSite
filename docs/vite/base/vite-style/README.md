@@ -243,8 +243,9 @@ export  default function Header() {
 npm install -D tailwindcss postcss autoprefixer
 ```
 
-然后新建配置文件tailwind.config.js
+然后新建配置文件tailwind.config.cjs 和 postcss.config.cjs:
 ```js
+// tailwind.config.cjs
 module.exports = {
   content: [
     "./index.html",
@@ -255,6 +256,15 @@ module.exports = {
   },
   plugins: [],
 }
+
+// postcss.config.cjs
+// 注意: Vite 配置文件中如果有 PostCSS 配置的情况下会覆盖掉 post.config.cjs 的内容!
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
 ```
 
 接着在项目的入口 CSS 中引入必要的样板代码:
@@ -264,3 +274,5 @@ module.exports = {
 @tailwind utilities;
 ```
 接下来，我们就可以在项目中使用 `Tailwind` 样式了。
+
+更多 `Tailwind CSS` 的高级用法可以查看[官方文档](https://www.tailwindcss.cn/)。
