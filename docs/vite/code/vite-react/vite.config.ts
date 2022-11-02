@@ -27,13 +27,13 @@ export default defineConfig({
       // 其中，name 表示当前文件名，local 表示类名
       generateScopedName: "[name]__[local]__[hash:base64:5]"
     },
-    postcss: {
-      // 插件数组
-      plugins: [
-        autoprefixer({
-          // autoprefixer 配置参数
-        })
-      ]
-    }
+    // postcss: {
+    //   // 插件数组
+    //   plugins: [
+    //     autoprefixer({
+    //       // autoprefixer 配置参数
+    //     })
+    //   ]
+    // }
   }
 })

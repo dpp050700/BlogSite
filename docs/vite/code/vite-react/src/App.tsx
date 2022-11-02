@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div>
+      <div className='bg-red-400'>
         <img src="/vite.svg" className="logo" alt="Vite logo" />
       </div>
       <h1>Vite + React</h1>
