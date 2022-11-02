@@ -194,3 +194,73 @@ export default defineConfig({
 - [postcss-pxtorem](https://github.com/cuth/postcss-pxtorem): 用来将 px 转换为 rem 单位，在适配移动端的场景下很常用。
 - [postcss-preset-env](https://github.com/csstools/postcss-preset-env): 通过它，你可以编写最新的 CSS 语法，不用担心兼容性问题。
 - [cssnano](https://github.com/cssnano/cssnano): 主要用来压缩 CSS 代码，跟常规的代码压缩工具不一样，它能做得更加智能，比如提取一些公共样式进行复用、缩短一些常见的属性值等等。
+
+更多 PostCSS 插件：[PostCSS](https://www.postcss.parts/)
+
+##  Windi CSS
+首先安装 `Windi CSS` 和对应的 `Vite` 插件：
+```shell
+npm install windicss vite-plugin-windicss -D
+```
+随后我们在配置文件中来使用它:
+```ts
+// vite.config.ts
+import { defineConfig, normalizePath } from 'vite'
+import react from '@vitejs/plugin-react'
+
+import windi from "vite-plugin-windicss";
+
+export default defineConfig({
+  // 省略其他配置
+  plugins: [react(), windi()]
+})
+```
+在 `src/main.tsx` 中引入一个必需的 import 语句:
+```ts
+// 用来注入 Windi CSS 所需的样式
+import "virtual:windi.css";
+```
+接下来，我们就可以愉快的使用 `windi css` 了：
+```tsx
+import style from './index.module.scss'
+
+export  default function Header() {
+  return <div className={style.header}>
+    <div className='p-30px'>Vite App</div>
+  </div>
+}
+```
+更多 `windi css` 的高级用法可以查看[官方文档](https://windicss.org/)。
+
+
+## Tailwind CSS 
+
+我们可以参照 `Tailwind CSS` 官网教程[](https://tailwindcss.com/docs/guides/vite)来接入 `Tailwind CSS`，或者切换到 `vite-tailwind-css` 分支查看。
+
+首先安装 `tailwindcss` 及其必要的依赖:
+
+```shell
+npm install -D tailwindcss postcss autoprefixer
+```
+
+然后新建配置文件tailwind.config.js
+```js
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+接着在项目的入口 CSS 中引入必要的样板代码:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+接下来，我们就可以在项目中使用 `Tailwind` 样式了。

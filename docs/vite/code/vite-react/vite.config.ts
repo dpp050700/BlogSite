@@ -3,11 +3,12 @@ import react from '@vitejs/plugin-react'
 import * as path from "path";
 const resolve = path.resolve
 import autoprefixer from 'autoprefixer'
+import windi from "vite-plugin-windicss";
 
 const variableScssPath = normalizePath(resolve(__dirname, './src/styles/variable.scss'))
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), windi()],
   base: './',
   resolve: {
     alias: {
