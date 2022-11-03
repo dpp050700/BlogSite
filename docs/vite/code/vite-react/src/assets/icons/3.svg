@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>待卖家报价@3x</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="32" height="32"></rect>
+        <linearGradient x1="79.7341928%" y1="79.9495775%" x2="-19.7460728%" y2="0%" id="linearGradient-3">
+            <stop stop-color="#CC7E30" offset="0%"></stop>
+            <stop stop-color="#FFBF80" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="80.6291853%" y1="107.763672%" x2="75.7242839%" y2="-6.55517578%" id="linearGradient-4">
+            <stop stop-color="#FFCA98" offset="0%"></stop>
+            <stop stop-color="#FFEBD9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="我的" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-53.000000, -48.000000)">
+            <g id="编组-17" transform="translate(36.000000, 48.000000)">
+                <g id="编组" transform="translate(17.000000, 0.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="蒙版" fill="#F8F8F8" opacity="0" xlink:href="#path-1"></use>
+                    <path d="M4.57142857,3.42857143 L17.1428571,3.42857143 L17.1428571,3.42857143 L22.8571429,8.57142857 L22.8571429,25.1428571 C22.8571429,26.4052223 21.8337937,27.4285714 20.5714286,27.4285714 L4.57142857,27.4285714 C3.30906343,27.4285714 2.28571429,26.4052223 2.28571429,25.1428571 L2.28571429,5.71428571 C2.28571429,4.45192057 3.30906343,3.42857143 4.57142857,3.42857143 Z" id="矩形" fill="#F7E7D4" mask="url(#mask-2)"></path>
+                    <path d="M4.57142857,3.42857143 L17.1428571,3.42857143 L17.1428571,3.42857143 L17.1428571,7.42857143 C17.1428571,8.059754 17.6545317,8.57142857 18.2857143,8.57142857 L22.8571429,8.57142857 L22.8571429,8.57142857 L22.8571429,25.1428571 C22.8571429,26.4052223 21.8337937,27.4285714 20.5714286,27.4285714 L4.57142857,27.4285714 C3.30906343,27.4285714 2.28571429,26.4052223 2.28571429,25.1428571 L2.28571429,5.71428571 C2.28571429,4.45192057 3.30906343,3.42857143 4.57142857,3.42857143 Z" id="矩形" fill="url(#linearGradient-3)" mask="url(#mask-2)"></path>
+                    <line x1="6.85714286" y1="13.1428571" x2="14.8571429" y2="13.1428571" id="路径-10" stroke="#FFFFFF" stroke-width="2.28571429" opacity="0.526692708" stroke-linecap="round" mask="url(#mask-2)"></line>
+                    <line x1="6.85714286" y1="18.2857143" x2="11.4285714" y2="18.2857143" id="路径-10" stroke="#FFFFFF" stroke-width="2.28571429" opacity="0.526692708" stroke-linecap="round" mask="url(#mask-2)"></line>
+                    <g mask="url(#mask-2)" id="代付款备份-3">
+                        <g transform="translate(18.285714, 14.857143)" id="编组-37">
+                            <circle id="椭圆形" fill="url(#linearGradient-4)" cx="6.85714286" cy="6.85714286" r="6.85714286"></circle>
+                            <polyline id="路径-8" stroke="#D58C3E" stroke-width="2.28571429" stroke-linecap="round" stroke-linejoin="round" points="6.28571429 4.57142857 6.28571429 6.85714286 8.57142857 8"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

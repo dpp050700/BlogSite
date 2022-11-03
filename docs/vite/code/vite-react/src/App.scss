@@ -1,21 +1,21 @@
-//@import "@/styles/variable.scss";
+// @import "@/styles/variable.scss";
 
 $wrap-width: 1280px;
 
 #root {
   max-width: $wrap-width;
-  margin: 0 auto;
   padding: 2rem;
+  margin: 0 auto;
   text-align: center;
 
   .logo {
     height: 6em;
     padding: 1.5em;
     will-change: filter;
+    margin: 0;
   }
 
-  h1{
+  h1 {
     color: $theme-color;
   }
 }
-

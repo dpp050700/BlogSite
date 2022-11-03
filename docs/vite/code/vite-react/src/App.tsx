@@ -1,9 +1,9 @@
-import './App.scss'
+import React from 'react';
+import './App.scss';
 
-import Header from "@/components/header";
+import Header from '@/components/header';
 
 function App() {
-
   return (
     <div className="App">
       <Header />
@@ -12,7 +12,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

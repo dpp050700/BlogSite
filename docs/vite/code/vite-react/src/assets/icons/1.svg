@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="38px" height="28px" viewBox="0 0 38 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/IM</title>
+    <defs>
+        <linearGradient x1="0%" y1="11.71875%" x2="100%" y2="88.28125%" id="linearGradient-1">
+            <stop stop-color="#FFCC90" offset="0%"></stop>
+            <stop stop-color="#FAA65C" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="12.9887859%" y1="9.32539917%" x2="100%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFEEDF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.900000036">
+        <g id="我要买" transform="translate(-315.000000, -108.000000)">
+            <g id="编组备份-2" transform="translate(12.000000, 100.000000)">
+                <g id="编组" transform="translate(303.000000, 8.000000)">
+                    <path d="M12.5943222,0 L31.4056778,0 C33.4498693,-2.19111866e-15 35.1651403,1.54130919 35.3829144,3.57386751 L38,28 L38,28 L6,28 L8.61708562,3.57386751 C8.83485973,1.54130919 10.5501307,3.75511886e-16 12.5943222,0 Z" id="矩形" fill="url(#linearGradient-1)"></path>
+                    <path d="M17,6 C17,8.76142375 19.2385763,11 22,11 C24.7614237,11 27,8.76142375 27,6" id="路径" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path>
+                    <g id="编组-7" transform="translate(0.000000, 11.000000)">
+                        <circle id="椭圆形" fill="url(#linearGradient-2)" cx="7" cy="7" r="7"></circle>
+                        <polyline id="路径" stroke="#ECAA71" stroke-width="2" opacity="0.800000012" stroke-linecap="round" stroke-linejoin="round" points="7 4 7 7 10 7"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

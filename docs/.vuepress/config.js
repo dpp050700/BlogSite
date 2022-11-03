@@ -207,6 +207,14 @@ module.exports = () => {
               {
                 title: 'Vite 中接入现代化的 CSS 工程方案',
                 path: '/vite/base/vite-style/',
+              },
+              {
+                title: '使用 Lint 工具规范代码',
+                path: '/vite/base/vite-lint/',
+              },
+              {
+                title: '如何处理图片资源',
+                path: '/vite/base/vite-resources/',
               }
             ]
           },

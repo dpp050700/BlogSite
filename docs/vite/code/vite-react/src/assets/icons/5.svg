@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>发布成功</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#ECAA71" stop-opacity="0.6" offset="0%"></stop>
+            <stop stop-color="#ECAA71" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="发布流程最终稿！！" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="发布成功" transform="translate(-151.000000, -108.000000)">
+            <g id="编组-3" transform="translate(63.000000, 108.000000)">
+                <g id="成功" transform="translate(88.000000, 0.000000)">
+                    <circle id="椭圆形" fill="url(#linearGradient-1)" cx="36" cy="36" r="36"></circle>
+                    <polyline id="路径-2" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" points="26 36 33 44 48 28"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

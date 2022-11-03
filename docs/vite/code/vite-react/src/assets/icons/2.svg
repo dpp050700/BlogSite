@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>采购成功@3x</title>
+    <defs>
+        <linearGradient x1="79.7341928%" y1="79.9495775%" x2="-19.7460728%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#CC7E30" offset="0%"></stop>
+            <stop stop-color="#FFBF80" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="80.6291853%" y1="107.763672%" x2="75.7242839%" y2="-6.55517578%" id="linearGradient-2">
+            <stop stop-color="#FFCA98" offset="0%"></stop>
+            <stop stop-color="#FFEBD9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="我的" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-247.000000, -48.000000)">
+            <g id="编组-16备份" transform="translate(237.000000, 48.000000)">
+                <g id="待提货" transform="translate(10.000000, 0.000000)">
+                    <rect id="矩形" fill="#F8F8F8" opacity="0" x="0" y="0" width="32" height="32"></rect>
+                    <path d="M4.57142857,3.42857143 L17.1428571,3.42857143 L17.1428571,3.42857143 L22.8571429,8.57142857 L22.8571429,25.1428571 C22.8571429,26.4052223 21.8337937,27.4285714 20.5714286,27.4285714 L4.57142857,27.4285714 C3.30906343,27.4285714 2.28571429,26.4052223 2.28571429,25.1428571 L2.28571429,5.71428571 C2.28571429,4.45192057 3.30906343,3.42857143 4.57142857,3.42857143 Z" id="矩形" fill="#F7E7D4"></path>
+                    <path d="M4.57142857,3.42857143 L17.1428571,3.42857143 L17.1428571,3.42857143 L17.1428571,7.42857143 C17.1428571,8.059754 17.6545317,8.57142857 18.2857143,8.57142857 L22.8571429,8.57142857 L22.8571429,8.57142857 L22.8571429,25.1428571 C22.8571429,26.4052223 21.8337937,27.4285714 20.5714286,27.4285714 L4.57142857,27.4285714 C3.30906343,27.4285714 2.28571429,26.4052223 2.28571429,25.1428571 L2.28571429,5.71428571 C2.28571429,4.45192057 3.30906343,3.42857143 4.57142857,3.42857143 Z" id="矩形" fill="url(#linearGradient-1)"></path>
+                    <line x1="6.85714286" y1="13.1428571" x2="14.8571429" y2="13.1428571" id="路径-10" stroke="#FFFFFF" stroke-width="2.28571429" opacity="0.526692708" stroke-linecap="round"></line>
+                    <line x1="6.85714286" y1="18.2857143" x2="11.4285714" y2="18.2857143" id="路径-10" stroke="#FFFFFF" stroke-width="2.28571429" opacity="0.526692708" stroke-linecap="round"></line>
+                    <g id="编组-37" transform="translate(17.142857, 14.857143)">
+                        <circle id="椭圆形" fill="url(#linearGradient-2)" cx="6.85714286" cy="6.85714286" r="6.85714286"></circle>
+                        <polyline id="路径-2" stroke="#D58C3E" stroke-width="2.28571429" stroke-linecap="round" stroke-linejoin="round" transform="translate(7.093836, 6.147062) rotate(-45.000000) translate(-7.093836, -6.147062) " points="4.80812204 5.00420532 4.80812204 7.28991961 9.37955061 7.28991961"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
