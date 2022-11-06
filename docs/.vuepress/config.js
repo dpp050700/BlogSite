@@ -215,6 +215,14 @@ module.exports = () => {
               {
                 title: '如何处理图片资源',
                 path: '/vite/base/vite-resources/',
+              },
+              {
+                title: 'Vite 插件开发',
+                path: '/vite/base/vite-plugin/',
+              },
+              {
+                title: 'Vite 依赖预构建',
+                path: '/vite/base/vite-preBundle/',
               }
             ]
           },

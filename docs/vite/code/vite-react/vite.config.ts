@@ -8,7 +8,7 @@ import eslint from "vite-plugin-eslint"
 import viteStylelint from 'vite-plugin-stylelint';
 const variableScssPath = normalizePath(resolve(__dirname, './src/styles/variable.scss'))
 
-import viteImagemin from 'vite-plugin-imagemin';
+// import viteImagemin from 'vite-plugin-imagemin';
 
 export default defineConfig({
   plugins: [
@@ -19,28 +19,28 @@ export default defineConfig({
       // 对某些文件排除检查
       exclude: ['node_modules', 'windicss']
     }),
-    viteImagemin({
-      // 无损压缩配置，无损压缩下图片质量不会变差
-      optipng: {
-        optimizationLevel: 7
-      },
-      // 有损压缩配置，有损压缩下图片质量可能会变差
-      pngquant: {
-        quality: [0.8, 0.9],
-      },
-      // svg 优化
-      svgo: {
-        plugins: [
-          {
-            name: 'removeViewBox'
-          },
-          {
-            name: 'removeEmptyAttrs',
-            active: false
-          }
-        ]
-      }
-    })
+    // viteImagemin({
+    //   // 无损压缩配置，无损压缩下图片质量不会变差
+    //   optipng: {
+    //     optimizationLevel: 7
+    //   },
+    //   // 有损压缩配置，有损压缩下图片质量可能会变差
+    //   pngquant: {
+    //     quality: [0.8, 0.9],
+    //   },
+    //   // svg 优化
+    //   svgo: {
+    //     plugins: [
+    //       {
+    //         name: 'removeViewBox'
+    //       },
+    //       {
+    //         name: 'removeEmptyAttrs',
+    //         active: false
+    //       }
+    //     ]
+    //   }
+    // })
   ],
   base: './',
   resolve: {
@@ -72,5 +72,9 @@ export default defineConfig({
   },
   build: {
     assetsInlineLimit: 8 * 1024 // 8kb
+  },
+  optimizeDeps: {
+    // force: true,
+    // exclude: ['lodash-es']
   }
 })
