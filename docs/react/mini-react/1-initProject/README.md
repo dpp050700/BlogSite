@@ -267,3 +267,8 @@ export default defineConfig({
 重新启动项目，可以看到控制台成功打印了 `render` 字符串。至此，我们项目的基本目录结构就完成了。
 
 ## 引入 eslint、prettier
+关于 `eslint` 和 `prettier` 的配置，这里就不过多介绍了，可以参考 [lint 配置](/vite/base/vite-lint/)。
+
+至此，我们项目的开发环境就算完成了，接下来我们将完成 JSX 的转换。
+
+本节代码： [](https://github.com/dpp050700/mini-react/tree/react18-v1)
