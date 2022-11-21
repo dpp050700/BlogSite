@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JSX 转换 | 此间少年</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/BlogSite/icon.jpeg">
+    <meta name="description" content="我的个人博客">
+    
+    <link rel="preload" href="/BlogSite/assets/css/0.styles.a8333bdb.css" as="style"><link rel="preload" href="/BlogSite/assets/js/app.93347ae9.js" as="script"><link rel="preload" href="/BlogSite/assets/js/2.1c2fd4e3.js" as="script"><link rel="preload" href="/BlogSite/assets/js/14.8070651f.js" as="script"><link rel="prefetch" href="/BlogSite/assets/js/10.de67b419.js"><link rel="prefetch" href="/BlogSite/assets/js/11.3fdda2b9.js"><link rel="prefetch" href="/BlogSite/assets/js/12.9b0e215f.js"><link rel="prefetch" href="/BlogSite/assets/js/13.d8c7d23a.js"><link rel="prefetch" href="/BlogSite/assets/js/15.a6691e12.js"><link rel="prefetch" href="/BlogSite/assets/js/16.b1815631.js"><link rel="prefetch" href="/BlogSite/assets/js/17.8f49d4b1.js"><link rel="prefetch" href="/BlogSite/assets/js/18.4b6e7014.js"><link rel="prefetch" href="/BlogSite/assets/js/19.9cc899e6.js"><link rel="prefetch" href="/BlogSite/assets/js/20.9c258601.js"><link rel="prefetch" href="/BlogSite/assets/js/21.2b359636.js"><link rel="prefetch" href="/BlogSite/assets/js/22.5ad1554d.js"><link rel="prefetch" href="/BlogSite/assets/js/23.125badf3.js"><link rel="prefetch" href="/BlogSite/assets/js/24.3731cae6.js"><link rel="prefetch" href="/BlogSite/assets/js/25.86df1f33.js"><link rel="prefetch" href="/BlogSite/assets/js/26.5dbbfe9d.js"><link rel="prefetch" href="/BlogSite/assets/js/27.48079411.js"><link rel="prefetch" href="/BlogSite/assets/js/28.e76ed6c8.js"><link rel="prefetch" href="/BlogSite/assets/js/29.de1b2025.js"><link rel="prefetch" href="/BlogSite/assets/js/3.e2c05d27.js"><link rel="prefetch" href="/BlogSite/assets/js/30.3e54ad6e.js"><link rel="prefetch" href="/BlogSite/assets/js/31.ea116c0f.js"><link rel="prefetch" href="/BlogSite/assets/js/32.25f4b7c9.js"><link rel="prefetch" href="/BlogSite/assets/js/33.d92b5d0e.js"><link rel="prefetch" href="/BlogSite/assets/js/34.3082af57.js"><link rel="prefetch" href="/BlogSite/assets/js/35.5585f154.js"><link rel="prefetch" href="/BlogSite/assets/js/36.cfd988ee.js"><link rel="prefetch" href="/BlogSite/assets/js/37.e36e7272.js"><link rel="prefetch" href="/BlogSite/assets/js/38.65c86de2.js"><link rel="prefetch" href="/BlogSite/assets/js/39.0e5dac13.js"><link rel="prefetch" href="/BlogSite/assets/js/4.a148926e.js"><link rel="prefetch" href="/BlogSite/assets/js/40.bf033fb0.js"><link rel="prefetch" href="/BlogSite/assets/js/41.ae655f8c.js"><link rel="prefetch" href="/BlogSite/assets/js/42.74519c16.js"><link rel="prefetch" href="/BlogSite/assets/js/43.4ccf3a26.js"><link rel="prefetch" href="/BlogSite/assets/js/44.b95e8b96.js"><link rel="prefetch" href="/BlogSite/assets/js/45.8ab9f25b.js"><link rel="prefetch" href="/BlogSite/assets/js/46.f98ddc19.js"><link rel="prefetch" href="/BlogSite/assets/js/47.3a755fb7.js"><link rel="prefetch" href="/BlogSite/assets/js/48.bc0f5cb7.js"><link rel="prefetch" href="/BlogSite/assets/js/49.72d8b160.js"><link rel="prefetch" href="/BlogSite/assets/js/5.78d91289.js"><link rel="prefetch" href="/BlogSite/assets/js/50.7f790bba.js"><link rel="prefetch" href="/BlogSite/assets/js/51.89d688e4.js"><link rel="prefetch" href="/BlogSite/assets/js/52.2842865d.js"><link rel="prefetch" href="/BlogSite/assets/js/53.7be1eb1d.js"><link rel="prefetch" href="/BlogSite/assets/js/54.f3c3384e.js"><link rel="prefetch" href="/BlogSite/assets/js/55.2bd1641e.js"><link rel="prefetch" href="/BlogSite/assets/js/56.f2771313.js"><link rel="prefetch" href="/BlogSite/assets/js/6.d54a6eb8.js"><link rel="prefetch" href="/BlogSite/assets/js/7.439e92a8.js"><link rel="prefetch" href="/BlogSite/assets/js/8.2ba067f6.js"><link rel="prefetch" href="/BlogSite/assets/js/9.f878b838.js">
+    <link rel="stylesheet" href="/BlogSite/assets/css/0.styles.a8333bdb.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/BlogSite/" class="home-link router-link-active"><!----> <span class="site-name">此间少年</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端三剑客" class="dropdown-title"><span class="title">前端三剑客</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端三剑客" class="mobile-dropdown-title"><span class="title">前端三剑客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BlogSite/html/" class="nav-link">
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/css/" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/javascript/prototype/" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><a href="/BlogSite/http/" class="nav-link">
+  HTTP
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BlogSite/vue/" class="nav-link">
+  vue2.0
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/vueNext/" class="nav-link">
+  vue3.0
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/react/analysis/" class="nav-link">
+  React18
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="打包工具" class="dropdown-title"><span class="title">打包工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="打包工具" class="mobile-dropdown-title"><span class="title">打包工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BlogSite/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/rollup/" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/vite/" class="nav-link">
+  vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试分享" class="dropdown-title"><span class="title">面试分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试分享" class="mobile-dropdown-title"><span class="title">面试分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BlogSite/interviewQuestion/html/" class="nav-link">
+  面试八股文
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/interviewCompany/company1/" class="nav-link">
+  面试记录
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端三剑客" class="dropdown-title"><span class="title">前端三剑客</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端三剑客" class="mobile-dropdown-title"><span class="title">前端三剑客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BlogSite/html/" class="nav-link">
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/css/" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/javascript/prototype/" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><a href="/BlogSite/http/" class="nav-link">
+  HTTP
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BlogSite/vue/" class="nav-link">
+  vue2.0
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/vueNext/" class="nav-link">
+  vue3.0
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/react/analysis/" class="nav-link">
+  React18
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="打包工具" class="dropdown-title"><span class="title">打包工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="打包工具" class="mobile-dropdown-title"><span class="title">打包工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BlogSite/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/rollup/" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/vite/" class="nav-link">
+  vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试分享" class="dropdown-title"><span class="title">面试分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试分享" class="mobile-dropdown-title"><span class="title">面试分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BlogSite/interviewQuestion/html/" class="nav-link">
+  面试八股文
+</a></li><li class="dropdown-item"><!----> <a href="/BlogSite/interviewCompany/company1/" class="nav-link">
+  面试记录
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/BlogSite/react/analysis/" class="sidebar-link">React 原理分析</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/BlogSite/react/mini-react/" class="sidebar-heading clickable router-link-active"><span>React 源码实现</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="jsx-转换"><a href="#jsx-转换" class="header-anchor">#</a> JSX 转换</h1> <p>上一章我们有讲到，react 在开发环境会将 jsx 转换为名为 jsxDEV 的方法。对于该方法的定义实际上是在 react/src/ReactElement.ts 的文件夹下面。</p> <p>那么，我们先创建一下这个文件：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">cd</span> packages/react/src
+<span class="token function">mkdir</span> ReactElement.ts
+</code></pre></div><p>我们可以先看一下 <code>jsxDEV</code> 函数调用后返回的产物，在 <code>demo/v1/main.tsx</code> 中我们可以进行 <code>console</code> 打印：</p> <p>注意：这里要使用官方的 <code>React</code> 库，暂时把 <code>vite.config.ts</code> 中配置的 react 别名取消掉。</p> <div class="language-tsx extra-class"><pre class="language-tsx"><code><span class="token keyword">const</span> element <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>container<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">hello world</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span>
+</code></pre></div><p>打开浏览器控制台，可以看到具体打印如下：</p> <p><img src="/BlogSite/assets/img/jsx-1.45b8f32e.jpg" alt=""></p> <p>可以看出，<code>jsxDEV</code> 最终返回的是一个对象，其中几个重要的属性如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> element <span class="token operator">=</span> <span class="token punctuation">{</span>
+  $$<span class="token keyword">typeof</span><span class="token operator">:</span> <span class="token string">'表示 ReactElement 的类型'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">key</span><span class="token operator">:</span> <span class="token string">'ReactElement 唯一标识'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token string">'ReactElement 的属性'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">ref</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'标签的具体类型 div、span'</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>那么，我们现在就可以在 <code>react/src/ReactElement.ts</code> 来写具体的方法了。</p> <p>在此之前，我们要再创建一个包文件夹 <code>shared</code>，该包里面会放一些类型定义、公共函数等。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">cd</span> mini-react/packages
+mdkir shared
+<span class="token function">npm</span> init <span class="token parameter variable">-y</span>
+</code></pre></div><p>在 <code>shared</code> 下创建 <code>ReactSymbols.ts</code>用来定义 ReactElement 的类型。</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// shared/ReactSymbols.ts</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">REACT_ELEMENT_TYPE</span> <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'react.element'</span><span class="token punctuation">)</span>
+</code></pre></div><p>在 <code>shared</code> 下创建 <code>ReactTypes.ts</code>用来定义 Typescript 的类型。</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">ElementType</span> <span class="token operator">=</span> <span class="token builtin">string</span>
+
+<span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Key</span> <span class="token operator">=</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">null</span>
+
+<span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Ref</span> <span class="token operator">=</span> <span class="token builtin">any</span>
+
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">ReactElement</span> <span class="token punctuation">{</span>
+  $$<span class="token keyword">typeof</span><span class="token operator">:</span> <span class="token builtin">symbol</span>
+  type<span class="token operator">:</span> ElementType
+  key<span class="token operator">:</span> Key
+  ref<span class="token operator">:</span> Ref
+  props<span class="token operator">:</span> Props
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Props</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">any</span>
+  children<span class="token operator">?</span><span class="token operator">:</span> ReactElement
+<span class="token punctuation">}</span>
+</code></pre></div><p>要想在 <code>react</code> 包中使用 <code>shared</code> 中的导出，需要在 <code>package.json</code> 中定义并安装。</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token comment">//react/package.json</span>
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;dependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;shared&quot;</span><span class="token operator">:</span> <span class="token string">&quot;workspace:*&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>接下来，我们就要把 <code>type</code>、<code>props</code>、 <code>key</code> 这些参数取出来，<code>type</code> 很简单，jsx 接收的第一个参数就是 type，而 props、key ref 这些参数都在第二参数 config 中。</p> <p>我们可以先从 config 中取出 key 和 ref，那么剩余的参数就是 props 的值了。具体代码如下：</p> <div class="language-tsx extra-class"><pre class="language-tsx"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>
+  Key<span class="token punctuation">,</span>
+  Ref<span class="token punctuation">,</span>
+  Props<span class="token punctuation">,</span>
+  ElementType<span class="token punctuation">,</span>
+  ReactElement <span class="token keyword">as</span> ReactElementType
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'shared/ReactTypes'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token constant">REACT_ELEMENT_TYPE</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'shared/ReactSymbols'</span>
+<span class="token keyword">import</span> hasOwnProperty <span class="token keyword">from</span> <span class="token string">'shared/hasOwnProperty'</span>
+
+<span class="token keyword">const</span> <span class="token constant">RESERVED_PROPS</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  key<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  ref<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  __self<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  __source<span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">ReactElement</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>
+  type<span class="token operator">:</span> ElementType<span class="token punctuation">,</span>
+  key<span class="token operator">:</span> Key<span class="token punctuation">,</span>
+  ref<span class="token operator">:</span> Ref<span class="token punctuation">,</span>
+  props<span class="token operator">:</span> Props
+<span class="token punctuation">)</span><span class="token operator">:</span> ReactElementType <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    $$<span class="token keyword">typeof</span><span class="token operator">:</span> <span class="token constant">REACT_ELEMENT_TYPE</span><span class="token punctuation">,</span>
+    type<span class="token punctuation">,</span>
+    key<span class="token punctuation">,</span>
+    ref<span class="token punctuation">,</span>
+    props
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">hasValidRef</span><span class="token punctuation">(</span>config<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> config<span class="token punctuation">.</span>ref <span class="token operator">!==</span> <span class="token keyword">undefined</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">hasValidKey</span><span class="token punctuation">(</span>config<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> config<span class="token punctuation">.</span>key <span class="token operator">!==</span> <span class="token keyword">undefined</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">jsx</span><span class="token punctuation">(</span>type<span class="token operator">:</span> ElementType<span class="token punctuation">,</span> config<span class="token operator">:</span> Record<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">any</span><span class="token operator">&gt;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> props<span class="token operator">:</span> Props <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">let</span> key<span class="token operator">:</span> Key <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token keyword">let</span> ref<span class="token operator">:</span> Ref <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token keyword">let</span> propName<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>propName <span class="token keyword">in</span> config<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> value <span class="token operator">=</span> config<span class="token punctuation">[</span>propName<span class="token punctuation">]</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>propName <span class="token operator">===</span> <span class="token string">'key'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">hasValidKey</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        key <span class="token operator">=</span> value <span class="token operator">+</span> <span class="token string">''</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">continue</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>propName <span class="token operator">===</span> <span class="token string">'ref'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">hasValidRef</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ref <span class="token operator">=</span> value <span class="token operator">+</span> <span class="token string">''</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">continue</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>
+      <span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>config<span class="token punctuation">,</span> propName<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+      <span class="token operator">!</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token constant">RESERVED_PROPS</span><span class="token punctuation">,</span> propName<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      props<span class="token punctuation">[</span>propName<span class="token punctuation">]</span> <span class="token operator">=</span> value
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token function">ReactElement</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> key<span class="token punctuation">,</span> ref<span class="token punctuation">,</span> props<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> jsxDEV <span class="token operator">=</span> jsx
+</code></pre></div><p>接下来，在修改一下啊 <code>react/jsx-dev-runtime</code>，将 <code>jsxDEV</code> 在其中导出：</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">export</span> <span class="token punctuation">{</span> jsxDEV <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./src/ReactJSXElement'</span>
+</code></pre></div><p>这样，我们 JSX 语法的转换就完成了。接下来需要实现 <code>createContainer</code>。</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/BlogSite/assets/js/app.93347ae9.js" defer></script><script src="/BlogSite/assets/js/2.1c2fd4e3.js" defer></script><script src="/BlogSite/assets/js/14.8070651f.js" defer></script>
+  </body>
+</html>
