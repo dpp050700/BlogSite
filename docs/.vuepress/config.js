@@ -226,7 +226,12 @@ module.exports = () => {
           {
             title: 'Vite 原理分析',
             path: '/vite/analysis/',
-            children: []
+            children: [
+              {
+                title: 'Fiber 架构',
+                path: '/react/analysis/fiber/'
+              }
+            ]
           }
         ],
         '/react/': [

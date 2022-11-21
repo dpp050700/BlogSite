@@ -160,4 +160,6 @@ export const jsxDEV = jsx
 ```ts
 export { jsxDEV } from './src/ReactJSXElement'
 ```
-这样，我们 JSX 语法的转换就完成了。接下来需要实现 `createContainer`。
+这样，我们 JSX 语法的转换就完成了。接下来需要实现 `createRoot`。
+
+本节代码： [](https://github.com/dpp050700/mini-react/tree/react18-v1)
